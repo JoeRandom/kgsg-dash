@@ -1,16 +1,16 @@
-
-import React, { Component } from 'react'
-import { Grommet, Box, Tab, Tabs, Text, Footer, Header, Main, Grid , Nav, Anchor, CheckBox} from 'grommet'
+import { Footer, Grommet, Header, Main, Text, Tab, Box, Tabs, Button } from "grommet";
 import { grommet } from "grommet/themes";
 import { deepMerge } from "grommet/utils";
+import React from "react";
 import { css } from "styled-components";
+import Tabletop from "tabletop";
+import "./App.css";
+import TabulatorTable from "./tabulator-table.js";
+import TabulatorTableFerien from "./tabulator-table-ferien.js";
 
-import './App.css';
-import Tabletop from 'tabletop';
-// import ChartLeft from './ChartLeft'
-import TabulatorTable from './tabulator-table.js.js'
+import { connect } from "react-redux";
 
-global.groupStartOpen = true
+global.groupStartOpen = true;
 
 const customTheme = deepMerge(grommet, {
   tabs: {
@@ -21,51 +21,64 @@ const customTheme = deepMerge(grommet, {
         padding: ${theme.global.edgeSize.small};
         // box-shadow: ${theme.global.elevation.light.medium};
       `
-    },   
+    }
   }
 });
 
 class App extends React.Component {
-  
   constructor() {
-    super()
-    this.state = {
-      data: []
-    }
+    super();
+    this.state = {};
   }
 
   componentDidMount() {
+    // PL
     Tabletop.init({
-      key: '1K1dAfhWr5eoEEIC7g1iqZLcb0Brk-oqMMFd593tu89A',
+      key: "1K1dAfhWr5eoEEIC7g1iqZLcb0Brk-oqMMFd593tu89A",
       callback: googleData => {
-        this.setState(state => ({
-          data: googleData.filter(t => t.Aktiv === "x")
-        }));
+        this.props.updateTableData(googleData.filter(t => t.Aktiv === "x"));
       },
       simpleSheet: true
-    })
+    });
+    //ferien
+    Tabletop.init({
+      key: "1EPKKceUNV86ZIWRb2RNDQzRmoQ3jRqbfDSItndX1_9U",
+      callback: googleData => {
+        this.props.updateFerienTable(googleData);
+      },
+      simpleSheet: true
+    });
   }
 
   render() {
-    const { data } = this.state
+    const { table } = this.props;
+
     return (
       <Grommet theme={customTheme}>
-        <Header 
-          gridArea='nav'
-          background="light-4" pad="small">
-          <Text size="medium">Auswertung PL</Text>
-        </Header>
+        <Tabs>
+          <Tab title="Auswertung PL">
+            <TabulatorTable data={table.data.pl} />
+          </Tab>
+          <Tab title="Ferien">
+            <TabulatorTableFerien data={table.data.ferien} />
+          </Tab>
+        </Tabs>           
         <Main pad="small">
-        <TabulatorTable data={data} />
         </Main>
         <Footer background="light-4" justify="center" pad="small">
           <Text textAlign="center" size="small">
-            © 2020 KGSG | v.0.1
+            © 2020 KGSG | v.0.3
           </Text>
         </Footer>
       </Grommet>
-    )}
+    );
   }
+}
 
-
-export default App;
+export default connect(
+  state => ({ table: state.table }),
+  dispatch => ({ 
+    updateTableData: dispatch.table.updateData, 
+    updateFerienTable: dispatch.table.updateFerienData 
+  })
+)(App);

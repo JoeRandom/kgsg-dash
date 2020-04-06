@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { ReactTabulator } from "react-tabulator";
 import "react-tabulator/lib/css/semantic-ui/tabulator_semantic-ui.min.css";
 import "react-tabulator/lib/styles.css";
-import { Box,  Button } from "grommet";
+import { Button } from "grommet";
 import { Print } from "grommet-icons";
 
 
@@ -13,9 +13,9 @@ const options = {
   layoutColumnsOnNewData: true,
   layout: "fitColumns", //fit columns to width of table (optional)
   responsiveLayout: "hide", //hide columns that dont fit on the table
-  tooltips: true, //show tool tips on cells
+  // tooltips: true, //show tool tips on cells
   history: true, //allow undo and redo actions on the table
-  // groupBy: "Werkstatt",
+  groupBy: "Mitarbeiter",
   print: true,
   groupStartOpen: true,
   pagination: "local", //paginate the data
@@ -44,7 +44,7 @@ const options = {
     },
 }}
 
-class TabulatorTable extends Component {
+class TabulatorTableFerien extends Component {
   // I know this should have been stored in the state.
   // But calling this.setState hundreds of times in a render is not a good idea.
   // This is fine though as we don't want to re-render if these value changes.
@@ -53,26 +53,27 @@ class TabulatorTable extends Component {
 
   columns = [
     {
-      title: "Beschreibung",
-      field: "Beschreibung",
+      title: "Mitarbeiter",
+      field: "Mitarbeiter",
+      headerFilter: "input",
+    },
+    {
+      title: "Werkstatt",
+      field: "Werkstatt",
       headerFilter: "input",
       topCalc: "count"
     },
-    {
-      title: "Aufgabe",
-      field: "Aufgabe",
-      headerFilter: "input",
-      topCalc: "count"
+    { 
+     title: "Aufgabe",
+     field: "Aufgabe",
+     headerFilter: "input" 
     },
-    { title: "Werkstatt", field: "Werkstatt", headerFilter: "input" },
-    { title: "Projectcode", field: "Projectcode", headerFilter: "input" },
     {
-      title: "Stunden",
-      field: "Stunden",
+      title: "Pensum",
+      field: "Pensum",
       headerFilter: "input",
       topCalc: "sum"
     },
-    { title: "PL", field: "PL", headerFilter: "input" },
     {
       title: "Start",
       field: "Start",
@@ -161,11 +162,8 @@ class TabulatorTable extends Component {
           label="Drucken"
           size="small"
           icon={<Print />}
-          gap="small"
           onClick={this.printTable}
          />
-        {/* <button onClick={this.printTable}>Drucken</button> */}
-
         <ReactTabulator
           setLocale={"de"}
           ref={ref => (this.table = ref)}
@@ -183,9 +181,9 @@ class TabulatorTable extends Component {
           }}
           options={options}
         ></ReactTabulator>
-        </div>
+      </div>
     );
   }
 }
 
-export default TabulatorTable;
+export default TabulatorTableFerien;
