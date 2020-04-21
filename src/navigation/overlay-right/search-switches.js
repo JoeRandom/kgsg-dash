@@ -1,23 +1,41 @@
-import React, { useState } from 'react'
-
-import { Box, Grommet, CheckBox } from 'grommet'
+import { useStoreActions, useStoreState } from 'easy-peasy'
+import { Grommet } from 'grommet'
 import { grommet } from 'grommet/themes'
+import React from 'react'
 
 const SearchSwitches = ({ checked: checkedProp, ...rest }) => {
-  const [checked, setChecked] = useState(!!checkedProp)
-  const [checked2, setChecked2] = useState(!!checkedProp)
+  const state = useStoreState((state) => state.search.data)
 
-  const onChange = event => setChecked(event.target.checked)
-  const onChange2 = event => setChecked2(event.target.checked2)
+  const updateCheckbox = useStoreActions(
+    (actions) => actions.search.updateCheckbox
+  )
+
+  const onChange = (event) => {
+    const { name, checked } = event.target
+    updateCheckbox({ name, checked })
+  }
 
   return (
     <Grommet theme={grommet}>
-      <Box align='left' pad='xsmall'>
-        <CheckBox toggle label='In Planung' checked={checked} onChange={onChange} />
-      </Box>
-      <Box align='left' pad='xsmall'>
-        <CheckBox toggle label='Option2' checked={checked2} onChange={onChange2} />
-      </Box>
+      {/* <Box align='start' pad='xsmall'>
+        <CheckBox
+          toggle
+          label='In Planung'
+          checked={state.option1}
+          onChange={onChange}
+          name='option1'
+        />
+      </Box> */}
+
+      {/* <Box align='start' pad='xsmall'>
+        <CheckBox
+          toggle
+          label='Option2'
+          checked={state.option2}
+          onChange={onChange}
+          name='option2'
+        />
+      </Box> */}
     </Grommet>
   )
 }

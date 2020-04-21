@@ -5,8 +5,7 @@ import SearchSwitches from './overlay-right/search-switches'
 
 import {
   SearchAdvanced,
-  Close,
-  Print
+  Close
 } from 'grommet-icons'
 
 import {
@@ -26,18 +25,12 @@ const Head = () => {
 
   return (
     <Grommet>
-      <Box
-        direction='row' pad='xsmall'
-      >
+      <Box pad='xsmall'>
         <Button
-          icon={<Print />}
-          onClick={console.log('print table')}
-        />
-        <Button
+          pad='xsmall'
           icon={<SearchAdvanced />}
           onClick={onOpen}
         />
-
       </Box>
       {open && (
         <Layer

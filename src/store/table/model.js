@@ -1,4 +1,4 @@
-import { action } from "easy-peasy";
+import { action } from 'easy-peasy'
 
 const tableModel = {
   data: {
@@ -7,12 +7,12 @@ const tableModel = {
   },
 
   updateData: action((state, payload) => {
-    state.data.pl = payload;
+    state.data.pl = payload
   }),
 
   updateFerienData: action((state, payload) => {
-    state.data.ferien = payload;
+    state.data.ferien = payload
   })
-};
+}
 
-export default tableModel;
+export default tableModel

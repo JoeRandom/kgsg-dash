@@ -1,5 +1,5 @@
-import { Footer, Grommet, Header, Main, Text, Tab, Box, Tabs, Button, DropButton, TextInput, Calendar, Keyboard, MaskedInput, FormDown } from 'grommet'
-import { Print, Schedule } from 'grommet-icons'
+import { Grommet, Main, Tab, Box, Tabs } from 'grommet'
+// import { Print, Schedule } from 'grommet-icons'
 import { grommet } from 'grommet/themes'
 import { deepMerge } from 'grommet/utils'
 import React from 'react'
@@ -16,11 +16,12 @@ global.groupStartOpen = true
 
 const customTheme = deepMerge(grommet, {
   tabs: {
-    gap: 'medium',
+    margin: 'xsmall',
+    gap: 'small',
     header: {
       background: 'light-2',
       extend: ({ theme }) => css`
-        padding: ${theme.global.edgeSize.small};
+        // padding: ${theme.global.edgeSize.xsmall};
       `
     }
   },
@@ -61,25 +62,21 @@ class App extends React.Component {
 
     return (
       <Grommet theme={customTheme}>
-        <Tabs
-          color='light-4'
-          // activeIndex={}
-          onActive={console.log('active')}
-        >
+        <Tabs color='light-4'>
           <Tab title='Auswertung PL'>
             <TabulatorTable data={table.data.pl} />
           </Tab>
           <Tab title='Ferien'>
             <TabulatorTableFerien data={table.data.ferien} />
           </Tab>
-          <Tab title='Charts'>
+          {/* <Tab title='Charts'>
             <Text>platzhalter chart</Text>
-          </Tab>
-          <Box irection='row' pad='xsmall' align='right'>
+          </Tab> */}
+          <Box>
             <Head />
           </Box>
         </Tabs>
-        <Main pad='small' />
+        <Main />
         {/* <Footer background='light-4' justify='center' pad='small'>
           <Text textAlign='center' size='small'>
             © 2020 KGSG | v.0.3
