@@ -7,7 +7,7 @@ import { useStoreActions, useStoreState } from 'easy-peasy'
 const CalendarPicker = () => {
   const data = useStoreState((state) => state.search.data)
 
-  const setDate = useStoreActions((actions) => actions.search.updateDate)
+  // const setDate = useStoreActions((actions) => actions.search.updateDate)
   const setDates = useStoreActions((actions) => actions.search.updateDates)
 
   return (
@@ -17,13 +17,15 @@ const CalendarPicker = () => {
           firstDayOfWeek={1}
           size='medium'
           range
-          date={data.date}
+          // date={data.date}
           dates={data.dates}
           onSelect={(date) => {
             if (Array.isArray(date)) {
+              console.log(date)
               setDates(date)
             } else {
-              setDate(date)
+              console.log(date)
+              // setDate(date)
             }
           }}
         />

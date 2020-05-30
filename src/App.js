@@ -1,5 +1,4 @@
-import { Grommet, Main, Tab, Box, Tabs } from 'grommet'
-// import { Print, Schedule } from 'grommet-icons'
+import { Grommet, Main, Tab, Tabs, Box } from 'grommet'
 import { grommet } from 'grommet/themes'
 import { deepMerge } from 'grommet/utils'
 import React from 'react'
@@ -8,6 +7,7 @@ import Tabletop from 'tabletop'
 import './App.css'
 import TabulatorTable from './tabulators/tabulator-table.js'
 import TabulatorTableFerien from './tabulators/tabulator-table-ferien.js'
+import Chart from './tabulators/tabulator-chart.js'
 import Head from './navigation/header.js'
 
 import { connect } from 'react-redux'
@@ -69,9 +69,9 @@ class App extends React.Component {
           <Tab title='Ferien'>
             <TabulatorTableFerien data={table.data.ferien} />
           </Tab>
-          {/* <Tab title='Charts'>
-            <Text>platzhalter chart</Text>
-          </Tab> */}
+          <Tab title='Charts'>
+            <Chart data={table.data.pl} />
+          </Tab>
           <Box>
             <Head />
           </Box>

@@ -14,8 +14,8 @@ class TabulatorTable extends Component {
   // I know this should have been stored in the state.
   // But calling this.setState hundreds of times in a render is not a good idea.
   // This is fine though as we don't want to re-render if these value changes.
-  startDate = this.props.start
-  endDate = this.props.end
+  startDate = "";
+  endDate = "";
 
   options = {
     margin: 0,
@@ -104,7 +104,7 @@ class TabulatorTable extends Component {
           return true;
         }
 
-        const endDate = this.props.dates[0][1] ;
+        const endDate = this.props.dates[0][1];
 
         if (endDate) {
           const start = moment(filter, "DD/MM/YYYY");
@@ -140,7 +140,7 @@ class TabulatorTable extends Component {
           return true;
         }
 
-        const startDate = this.props.start ;
+        const startDate = this.props.dates[0][0];
 
         if (startDate) {
           const start = moment(startDate);
@@ -259,8 +259,6 @@ export default connect(
   (state) => ({
     searchWerkstatt: state.search.data.werkstatt,
     dates: state.search.data.dates,
-    start: state.search.data.start,
-    end: state.search.data.end,
   }),
   (dispatch) => ({
     updateSearch: dispatch.search.updateSearchField,

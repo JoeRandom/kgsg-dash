@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "kgsg-dash-v2",
+    "produktiv": "kgsg-dash-v1"
+  }
+}

@@ -206,23 +206,7 @@ class TabulatorTableFerien extends Component {
 
     return (
       <div>
-        <Box         
-        pad='small'
-        direction="row"
-        align="center"
-        justify="center"      
-        >
-        <Button
-          align='center'
-          color="#777"
-          label="Drucken"
-          size="small"
-          icon={<Print size="small"/>}
-          gap="small"
-          pad='small'
-          onClick={this.printTable}
-        />
-        </Box>
+        
         <ReactTabulator
           setLocale={"de"}
           ref={(ref) => (this.table = ref)}
@@ -240,6 +224,23 @@ class TabulatorTableFerien extends Component {
           }}
           options={this.options}
         ></ReactTabulator>
+        <Box         
+        pad='small'
+        direction="row"
+        align="center"
+        justify="center"      
+        >
+        <Button
+          align='center'
+          color="#777"
+          label="Drucken"
+          size="small"
+          icon={<Print size="small"/>}
+          gap="small"
+          pad='small'
+          onClick={this.printTable}
+        />
+        </Box>
       </div>
     );
   }

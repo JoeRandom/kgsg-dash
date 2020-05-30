@@ -4,12 +4,14 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.10",
+    "@nivo/bar": "^0.61.1",
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.2",
     "@testing-library/user-event": "^10.0.1",
+    "add": "^2.0.6",
     "easy-peasy": "^3.3.0",
     "google-spreadsheet": "^3.0.11",
-    "grommet": "^2.12.0",
+    "grommet": "^2.13.0",
     "lodash.debounce": "^4.0.8",
     "material-ui": "^0.20.2",
     "moment": "^2.24.0",
@@ -22,9 +24,10 @@
     "react-sweet-state": "^2.1.1",
     "react-table": "^7.0.4",
     "react-tabulator": "^0.12.1",
+    "react-virtualized": "^9.21.2",
     "recharts": "^2.0.0-beta.1",
     "styled-components": "^5.1.0",
-    "tabletop": "^1.6.2",
+    "tabletop": "^1.6.3",
     "unstated": "^2.1.1"
   },
   "scripts": {
@@ -52,6 +55,6 @@
     ]
   },
   "devDependencies": {
-    "standard": "^14.3.3"
+    "standard": "^14.3.4"
   }
 }
