@@ -20,7 +20,7 @@
     "react-dom": "^16.13.1",
     "react-grid-layout": "^0.18.3",
     "react-redux": "^7.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "4.0.0",
     "react-sweet-state": "^2.1.1",
     "react-table": "^7.0.4",
     "react-tabulator": "^0.12.1",
