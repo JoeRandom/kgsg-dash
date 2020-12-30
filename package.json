@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^10.0.1",
     "add": "^2.0.6",
     "easy-peasy": "^3.3.0",
-    "google-spreadsheet": "^3.0.11",
+    "google-spreadsheet": "^3.1.15",
     "grommet": "^2.13.0",
     "lodash.debounce": "^4.0.8",
     "material-ui": "^0.20.2",
@@ -25,7 +25,7 @@
     "react-table": "^7.0.4",
     "react-tabulator": "^0.12.1",
     "react-virtualized": "^9.21.2",
-    "recharts": "^2.0.0-beta.1",
+    "recharts": "^2.0.0",
     "styled-components": "^5.1.0",
     "tabletop": "^1.6.3",
     "unstated": "^2.1.1"
